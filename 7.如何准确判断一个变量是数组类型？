@@ -1,0 +1,9 @@
+1.如何准确判断一个变量是数组类型？
+
+    考点：构造函数
+
+            let arr = []
+            arr instanceof Array  //　true
+
+            上面结果返回为true, 表明 arr 是 构造函数Array的一个实例，
+            说明 arr 是数组类型

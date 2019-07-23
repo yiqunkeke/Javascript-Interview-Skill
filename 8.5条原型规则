@@ -1,0 +1,46 @@
+原型规则是学习原型链的基础
+
+    1. 所有的引用类型（数组，对象，函数）都具有对象特性，即可以自由扩展属性
+
+        let obj = {}
+        obj.a = 100
+
+        let arr = []
+        arr.a = 100
+
+        function fn(){}
+        function.a = 100
+
+
+    2. 所有的引用类型（数组，对象，函数）都有一个__proto__属性（隐式原型），属性值是一个普通对象
+
+    3. 所有的函数，都有一个 prototype属性（显式原型），属性值也是一个普通对象
+
+    4. 所有引用类型（数组，对象，函数），其__proto__属性，指向(完全等于===)它的构造函数的 prototype属性（显式原型）
+
+    5. 当试图得到一个引用类型（数组，对象，函数）的某个属性时，如果这个变量本身没有这个属性，那么会去它的__proto__属性，
+       即它的构造函数的prototype属性中去寻找
+
+
+
+        function Foo(name) {
+            this.name = name
+        }    
+
+        Foo.prototype.alertname = function() {  // 所有的函数，都有prototype属性，它的值是一个普通对象，对象又都可以自由扩展属性
+            alert(this.name)
+        }
+
+        let f = new Foo('zhangsan')
+
+        f.printname = function() {    // 所有的引用类型（数组，对象，函数）都具有对象属性，都可以自由扩展属性
+            console.log(this.name)
+        }
+
+        f.printname()  // zhangsan
+        f.alertname()  // zhangsan
+
+        printname 是 对象 f 的自身属性，它的值是一个方法
+        alertname 是 构造函数 prototype 对象上的属性，它的值也是一个方法
+
+        f 对象不仅可以访问自身属性，也可以访问其构造函数Foo中prototype对象中的方法

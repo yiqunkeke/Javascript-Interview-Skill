@@ -1,0 +1,24 @@
+1. 描述通过构造函数，new 一个对象的过程？
+
+    考点： 构造函数
+
+    知识点(1): 定义构造函数
+
+        function Foo(age, name) {
+            this.age = age;
+            this.name = name;
+            // return this   // 默认有这一行
+        }
+
+        上面函数定义（声明）中， function 后面的函数名 Foo，以大写字母开头。
+        通常我们定义构造函数，函数名都以大写字母开头
+
+        let foo = new Foo('zhangsan', 20)
+
+        上面，通过 Foo() 构造函数，使用 new 关键字创建一个对象的过程如下：
+        
+            1. 先将 this 变成空对象
+            2. 对 this 追加属性并赋值，如 this.age = age
+            3. 将 this 返回，并赋给变量 foo
+
+        

@@ -1,0 +1,9 @@
+1.构造函数的扩展
+    let a = {} 是 let a = new Object() 的语法糖
+    let b = [] 是 let b = new Array() 的语法糖
+    function fn(){...} 是 let fn = new Function() 的语法糖
+
+    可以使用 instanceof 判断一个函数是不是一个变量的构造函数
+    换句话说，可以使用 instanceof 判断一个实例是不是属于该构造函数
+
+    
