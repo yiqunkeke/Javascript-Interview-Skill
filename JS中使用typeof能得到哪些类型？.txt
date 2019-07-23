@@ -1,0 +1,32 @@
+1. JS中使用typeof能得到哪些类型？
+
+    考点： JS变量类型
+
+    知识点(1)： JS变量类型有--值类型、引用类型
+
+                值类型包括： 字符串，数值，布尔，undefined
+                引用类型包括： 数组，对象，函数，null
+
+    知识点(2):  typeof只能详情区分值类型
+
+                typeof('a')  // string
+                typeof(1) // number
+                typeof(true) // boolean
+                typeof(undefined) // undefined
+
+
+                对于引用类型：数组，对象和 null, 使用typeof语法无法具体区分，这三种类型的数据，得到的都是object
+
+                typeof([]) 
+                typeof({})
+                typeof(null)
+                
+                // 都将得到 object   
+
+                对于引用类型： 函数，使用typeof语法，得到的结果是 function
+
+                typeof console.log    // function
+
+
+
+        
