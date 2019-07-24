@@ -1,0 +1,31 @@
+console.log(a)   // undefined
+var a = 100  // 变量的定义
+
+上面代码相当于：
+
+    var a;  // 把第9行中，变量a的声明提前到最开头
+    console.log(a);  // 所以，对于只声明而未进行赋值的变量a,其结果是 undefined
+    a = 100
+
+
+
+fn('zhangsan')
+
+function fn(name) {
+    age = 20
+    console.log(name, age)  // zhangsan, 20
+    var age
+}
+
+
+上面代码相当于：
+
+    function fn(name) {
+        var age
+        age = 20
+        console.log(name, age)
+    }
+    fn('zhangsan')
+
+
+总结： 用var声明的变量和函数的声明，会被提升到代码块的开头    

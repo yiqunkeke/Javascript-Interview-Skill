@@ -39,8 +39,30 @@
 
         f.printname()  // zhangsan
         f.alertname()  // zhangsan
+        f.toString()  // 
 
         printname 是 对象 f 的自身属性，它的值是一个方法
         alertname 是 构造函数 prototype 对象上的属性，它的值也是一个方法
 
-        f 对象不仅可以访问自身属性，也可以访问其构造函数Foo中prototype对象中的方法
+        f 对象不仅可以访问自身属性，也可以访问其构造函数Foo中prototype对象中的方法alertname()
+
+        对于 toString() 方法：
+            f 先在自身对象属性中寻找--->未找到，再去Foo.prototype原型对象属性中寻找--->未找到，再去 Object.prototype 原型对象属性中寻找--->找到 toString()方法    
+        
+
+
+
+
+                                                                                      null对象 
+
+                            构造函数                原型对象
+                            Object    ---->    Object.prototype（有 toString 属性）
+
+        构造函数             原型对象 
+          Foo    ---->   Foo.prototype  ----->   __proto__ 
+
+          对象
+           f ----------->  __proto__       
+
+
+           

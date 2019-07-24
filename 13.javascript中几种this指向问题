@@ -1,0 +1,63 @@
+1.javascript中几种this指向问题
+
+    要点： this要在执行时才能确认值，定义时无法确认this的指向
+
+    首先必须要说的是，this 永远指向函数运行时所在的对象，而不是函数被创建时所在的对象。
+
+(1) 构造函数中的 this
+    会被绑定到新构造的对象（f）
+
+    function Foo(name, age) {
+        // this = {}   // 默认省略
+        this.name = name
+        this.age = age
+        // return this   // 默认省略
+    }    
+
+    let f = new Foo('zhangsan', 20)
+
+    上面代码中，this指向的是实例对象 f
+
+(2) 作为对象属性来调用时， this指向该对象
+
+    let obj = {
+        name: 'a',
+        printname: function() {
+            console.log(this.name)
+        }
+    }
+
+    obj.printname()   // a
+
+(3) 作为普通函数来执行时， this指向window对象
+
+    function fn(){
+        console.log(this)
+    }
+
+    fn()
+
+(4) call, apply, bind 调用（重点掌握 call()）
+
+    function f1(name, age) {
+        alert(name)
+        console.log(this)   // {x: 100}
+    }
+
+    f1.call({x:100}, 'zhangsan', age)
+
+    上面代码中，this指向的是{x:100}这个对象，call()函数可以改变this的值
+
+
+    var f2 = function(name, age) {
+        alert(name)
+        console.log(this)   // {y:200}
+    }.bind({y:200})
+
+    f2('zhangsan', 20)
+
+    上面代码中，bind()可以改变this的指向 {y: 200}
+    !!!注意 bind()的链式写法必须使用函数表达式形式。
+
+补充：
+  this的最终指向的是那个调用它的对象（大多数可以这么理解，但并不是准确的）    

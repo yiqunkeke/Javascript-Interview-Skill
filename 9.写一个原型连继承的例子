@@ -1,0 +1,21 @@
+1. 写一个原型链继承的例子
+
+    function Animal() {
+        this.eat = function(){
+            console.log('eat')
+        }
+    }
+
+    function Dog() {
+        this.bark = function(){
+            console.log('bark')
+        }
+    }
+
+    Dog.prototype = new Animal()   // 把 Animal的实例对象，赋给Dog的prototype原型对象。那么Dog的原型对象中就具有了Animal实例对象中的方法eat()
+
+    let dog = new Dog()
+
+    dog.eat()   // 实例对象dog，就可以调用其构造函数Dog的原型对象，也就是 Dog.prototype 对象上的eat()方法了。
+
+    以上就是Dog的原型链继承 Animal中的方法
