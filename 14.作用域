@@ -1,0 +1,18 @@
+1.JS 没有块级作用域，只有函数和全局作用域
+
+    if(true) {
+            var a = 100
+        }
+        console.log(a) // 100
+
+        但在 es6中，新引入了let，用于指定变量属于块级作用域
+        
+
+2. Javascript采用函数作用域
+
+    在 Javascript中，每个函数作为一个作用域，在外部无法访问内部作用域中的变量
+
+    function f1(){
+        var a = 100
+    }
+    console.log(a) // 报错 a is not defined        

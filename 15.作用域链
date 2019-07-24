@@ -1,0 +1,96 @@
+自由变量： 在当前作用域中没有定义的变量叫“自由变量”。
+作用域链：归根结底就是自由变量的查找，形成一条链。
+
+1. 由于Javascript中的每个函数作为一个作用域，如果出现函数嵌套，则就会出现作用域链。
+
+        xo = 'alex';
+  
+        function Func(){
+            var xo = "seven";
+            function inner(){
+                var xo = 'alvin';
+                console.log(xo);
+            }
+            inner();
+        }
+        Func();
+
+        // 如上述代码则出现三个作用域组成的作用域链，如果出现作用域链后，那么寻找变量时候就会出现顺序，对于上述实例：
+
+        // 当执行console.log(xo)时，其寻找顺序为根据作用域链从内到外的优先级寻找，如果内层没有就逐步向上找，直到没找到抛出异常
+
+
+2. JavaScript的作用域在被执行之前已经创建，日后再去执行时只需要按照作用域链去寻找即可。      
+    
+    // 例子1
+    xo = 'alex';
+ 
+    function Func(){
+        var xo = "seven";
+        function inner(){
+            console.log(xo);   //xo 是自由变量
+        }
+        return inner;
+    }
+    
+    var ret = Func();
+    ret();
+
+    // 输出结果： seven
+
+
+    上述代码，在函数被调用之前作用域链已经存在：
+
+    全局作用域 -> Func函数作用域 -> inner函数作用域
+    当执行【ret();】时，由于其代指的是inner函数，此函数的作用域链在执行之前已经被定义为：
+        全局作用域 -> Func函数作用域 -> inner函数作用域，
+    所以，在执行【ret();】时，会根据已经存在的作用域链去寻找变量。
+
+
+    // 例子2
+
+    xo = 'alex';
+ 
+    function Func(){
+        var xo = "eirc";   //xo已经被重新定义为局部变量，并赋值为eirc
+        function inner(){
+            console.log(xo);
+        }
+        xo = 'seven';   //xo变量已经创建，是对xo的重新复制
+        return inner;
+    }
+    
+    var ret = Func();
+    ret();    
+
+    上述代码和示例一的目的相同，也是强调在函数被调用之前作用域链已经存在：
+
+    全局作用域 -> Func函数作用域 -> inner函数作用域
+    不同的时，在执行【var ret = Func();】时，Func作用域中的xo变量的值已经由 “eric” 被重置为 “seven”，
+    所以之后再执行【ret();】时，就只能找到“seven”。
+
+
+    // 例子3
+
+        xo = 'alex';
+        function Bar(){
+            console.log(xo);
+        }
+        
+        function Func(){
+            var xo = "seven";
+            return Bar;
+        }
+        
+        var ret = Func();
+        ret();
+
+        // 输出结果： alex    
+
+
+        上述代码，在函数被执行之前已经创建了两条作用域链：
+
+        全局作用域 -> Bar函数作用域
+        全局作用域 -> Func函数作用域
+        当执行【ret();】时，ret代指的Bar函数，而Bar函数的作用域链已经存在：全局作用域 -> Bar函数作用域，
+        所以，执行时会根据已经存在的作用域链去寻找
