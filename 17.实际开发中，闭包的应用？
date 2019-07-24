@@ -1,0 +1,17 @@
+function isFirstLoad(){
+    var list = []   // list变量在函数内部，外部是访问不到的，保证了变量安全性，不会被外部修改
+    return function(id) {
+        if(list.indexOf(id) >= 0) {
+            return false
+        } else {
+            list.push(id)
+            return true
+        }
+    }
+}
+
+var firstLoad = isFirstLoad()
+
+firstLoad(10)  // true
+firstLoad(10)  // false
+firstLoad(20)  // true
