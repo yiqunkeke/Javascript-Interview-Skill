@@ -1,0 +1,4 @@
+以下情况需要等待，都需要使用异步
+    * 定时任务 setTimeout， setInterval
+    * 网络请求： ajax请求，动态 <img>加载
+    * 事件绑定

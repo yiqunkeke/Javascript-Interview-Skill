@@ -1,0 +1,79 @@
+知识点1：什么是异步？   
+
+    console.log(100)
+    setTimeout(function(){
+        console.log(200)
+    },1000)
+    console.log(300)
+    
+    打印顺序是 100，300，1s后再打印200
+
+
+解答：异步与同步的区别是什么？
+
+        区别在于有没有阻塞程序的运行。
+        异步不会阻塞
+        同步会
+        
+        举例----alert是同步
+
+            console.log(100)
+            alert(200) // 1s后再点确认
+            console.log(300)
+
+        举例----setTimeout是异步
+
+
+知识点2：为什么需要使用异步？
+    JS是一种单线程的语言，所以它不得不采用异步。
+    异步和单线程是相辅相成的。  
+
+
+知识点3：何时需要异步？异步的使用场景？   
+
+    * 在可能发生等待的情况
+    * 等待过程中不能像alert一样阻塞程序运行
+    * 因此，所有“需要等待的情况”都需要异步
+    
+    以下情况需要等待，都需要使用异步
+    * 定时任务 setTimeout， setInterval
+    * 网络请求： ajax请求，动态 <img>加载
+    * 事件绑定
+
+
+    ajax请求代码示例：
+
+        console.log('start')
+        $.get('./data1.json', function(res){
+            console.log(res)
+        })    
+        console.log('end')
+
+        打印顺序是： start, end, 最后拿到数据后，打印res
+
+
+
+    <img>加载示例：
+
+        console.log('start')
+        var img = document.createElement('img')
+        img.onload = function(){
+            console.log('loaded')
+        }
+        img.src='/xxx.png'
+        console.log('end')
+
+        打印顺序是： start, end, 图片加载完成宾，打印loaded
+
+
+    事件绑定示例：
+
+        console.log('start')
+        document.getElementById('btn1').addEventListener('click', function(){
+            alert('clicked')
+        })
+        console.log('end')
+
+        打印顺序是： start, end, 用户点击之后，才会打印clicked
+
+ 
