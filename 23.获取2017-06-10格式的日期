@@ -1,0 +1,20 @@
+function formatDate(dt){
+    if(!dt) {
+        dt = new Date()
+    }
+    let year = dt.getFullYear()    // 年
+    let month = dt.getMonth() + 1  // 月
+    let date = dt.getDate()        // 日
+
+    if(month < 10) {
+        month = `0${month}`
+    }
+    if(date < 10) {
+        date = `0${date}`
+    }
+
+    return `${year}-${month}-${date}`
+}
+
+let dt = new Date()
+formatDate(dt)

@@ -1,0 +1,4 @@
+var r = Math.random()
+var r = `${r}0000000000`
+var r = r.slice(0,10)
+console.log(r)
