@@ -1,0 +1,117 @@
+https://segmentfault.com/a/1190000017055060?utm_source=tag-newest
+
+Q1: Javascript 中的强制类型转换是指什么？
+
+    难度：0
+
+    在Javascript中，两种不同的内置类型间的转换被称为强制转型。
+    强制转型在 Javascript中有两种形式： 显式和隐式
+
+    显式：
+
+        let a = '42'
+        let b = Number(a)
+        console.log(a)  // '42'
+        console.log(b) // 42
+
+    隐式：
+
+        let a = '42'
+        let b = a * 1   // 将 '42' 隐式转换为 42
+        console.log(a)  // '42'
+        console.log(b)  // 42
+
+Q2: Javascript中的作用域是指什么？
+
+    难度： 1
+
+    在Javascript中，每个函数都有自己的作用域。作用域基本上是变量以及如何通过名称访问这些变量的规则的集合。
+    只有函数中的代码才能访问函数作用域中的变量。
+
+    同一个作用域中变量名必须是唯一的。
+    一个作用域可以嵌套在另一个作用域中。
+    内部作用域的代码可以访问外部作用域中的变量。
+
+    '自由变量'（在当前作用域中，未定义的变量）的查找，会产生作用域链。
+    作用域链，在定义时已经创建，在执行时，只需要按照已经产生的作用域链去寻找自由变量即可。
+
+    Javascript中无块级作用域。      
+
+
+Q3: 解释Javascript中的相等性。
+
+    难度： 1
+
+    === 严格等于
+    == 不会比较类型（会发生强制类型转换）      
+
+    let a = '42'
+    let b = 42
+    console.log(a===b) // false
+    console.log(a==b) // true
+
+    除了 obj.a == ，其它都可以用 ===，这是jQuery源码的推荐写法
+
+
+Q4: 解释什么是回调函数，并提供一个简单的例子
+    
+    难度： 2
+
+    回调函数是可以作为参数传递给另一个函数的函数，并在某些操作完成后执行。
+
+    下面是一个简单的回调函数示例，这个函数在某些操作完成后打印消息到控制台。
+
+    function modifyArray(arr, callback){
+        // 对 arr 做一些操作
+        arr.push(100)
+        // 执行传进来的 callback 函数
+        callback()
+    }
+
+    let arr = [1,2,3]
+
+    modifyArray(arr, function(){
+        console.log('arr has been modified', arr)
+    })
+
+
+Q5: 'use strict' 的作用是什么？
+
+    难度： 2
+
+    // to learn
+
+
+Q6: 解释 Javascript中的 null 和 undefined?
+
+    难度： 2
+
+    undefined:  变量声明，但未赋值（或者理解为尚未初始化）
+    null：指向一个空对象
+
+
+Q7: 编写一个可以执行如下操作的函数
+
+    难度： 2 
+
+    var addSix = createBase(6)
+    addSix(10) // 返回16
+    addSix(21)  // 返回27
+
+
+    可以创建一个闭包来存放传递给函数createBase的值。
+    被返回的内部函数是在外部函数中创建的，内部函数就成了一个闭包，
+    它可以访问外部函数中的变量，在本示例中变量是 baseNumber
+
+    function createBase(baseNumber) {
+        return function(n) {
+            return baseNumber + N
+        }
+    }
+    var addSix = createBase(6)
+    addSix(10) 
+    addSix(21) 
+
+
+
+

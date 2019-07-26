@@ -4,17 +4,23 @@
 
         1. JSON是一个JS对象----它有2个API
 
-            . JSON.stringify({a:10,b:20})  // '{'a': 10, 'b': 20}' 
+            . JSON.stringify({a:10,b:20})  // '{'a': 10, 'b': 20}'   把对象 {a:10, b:20} 转换成字符串并且对象的key也变成字符串
 
-              上面表达式中，把对象 {a:10, b:20} 转换成字符串并且对象的key也变成字符串
+                JSON 的常规用途是同 web 服务器进行数据交换。
+                在向 web 服务器发送数据时，数据必须是字符串。
+                通过 JSON.stringify() 把 JavaScript 对象转换为字符串。
 
-            . JSON.parse('{'a': 10, 'b': 20}')  // {a:10,b:20}
 
-              上面表达式中，把字符串变成对象
+            . JSON.parse('{'a': 10, 'b': 20}')  // {a:10,b:20}  把字符串变成对象
+
+                JSON 的常规用途是同 web 服务器进行数据传输。
+                在从 web 服务器接收数据时，数据永远是字符串。
+                通过 JSON.parse() 解析数据，这些数据会成为 JavaScript 对象。     
 
 
 
         2. JSON 是一种数据格式
+
 
             . 交换数据:
                 当数据在浏览器与服务器之间进行交换时，这些数据只能是文本。
@@ -50,6 +56,10 @@
                     text = localStorage.getItem("testJSON");
                     obj =  JSON.parse(text);
                     document.getElementById("demo").innerHTML = obj.name;
-            
+
+
+
+
+       
 
 
