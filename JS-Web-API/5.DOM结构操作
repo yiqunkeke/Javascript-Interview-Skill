@@ -1,0 +1,38 @@
+(1) 新增节点
+
+(2) 获取父节点
+    
+(3) 获取子节点
+
+(4) 删除节点
+
+节点遍历-->数组遍历
+递归
+
+
+讲解：
+
+    1. 新增节点：
+
+        let div1 = document.getElementById('div1')
+
+        // 添加新节点
+        let p1 = document.createElement('p')
+        p1.innerHTML = 'this is p1'
+        div1.appendChild(p1) // 添加新创建的元素
+
+        // 移动已有节点
+        let p2 = document.getElementById('p2')
+        div1.appendChild(p2)  // 把p2移动到div1中，原来p2所在的位置就没有p2了
+
+
+    2. 获取父元素和子元素
+
+        let div1 = document.getElementById('div1')
+        let parent = div1.parentElement  // 获取父元素
+
+        let child = div1.childNodes  // 集合
+
+    3. 删除节点    
+        div1.removeChild(child[0]) // 删除第一个子元素
+

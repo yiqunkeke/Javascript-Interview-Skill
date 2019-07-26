@@ -1,0 +1,73 @@
+http://www.w3school.com.cn/js/js_htmldom.asp
+
+1. Javascript Html Dom
+
+    通过 HTML DOM ，javascript 能够 “访问” 和 “改变” HTML 文档的所有元素。
+
+2. HTML DOM (文档对象模型)
+
+    当网页被加载时，浏览器会创建页面的文档对象模型（Document Object Model）.
+
+    HTML DOM 模型被结构化为 “对象树”    
+
+3. HTML DOM 文档对象（document）是您的网页中所有其它对象的拥有者。
+
+    HTML DOM Document 对象
+    文档对象代表您的网页。
+
+    如果您希望访问HTML页面中的任何元素，那么您总是从访问 document对象开始。
+
+4. 如何使用 document 对象访问和操作 HTML 实例？
+
+    . 查找 HTML 元素？
+
+        (1) document.getElementById('id1')            // 通过元素id来查找元素
+        (2) document.getElementsByTagName('p')       // 通过标签名来查找元素
+        (3) document.getElementsByClassName('intro')  // 通过类名来查找元素
+        (4) document.querySelectorAll('p.intro')    // 通过CSS选择器来查找元素
+
+
+    . 改变 HTML 元素？
+
+        (1) document.getElementById('id').innerHTML = 'hello'       // 改变内容
+        (2) document.getElementById('img').src = '/a.png'       // 改变属性
+        (3) document.getElementById('id').style.color = 'red'    // 改变样式
+
+    . DOM 结构操作：
+
+        (1) document.createElement('div')   // 创建 HTML 元素(新增节点)
+
+        (2) removeChild()       // 删除子节点
+
+            举例：
+            <div id='wrapper'>
+                <div id='header'>
+                    this is header
+                </div>
+            </div>
+
+            删除header节点:
+
+            let wrapper = document.getElementById('wrapper')
+            let header = document.getElementById('header')
+            wrapper.removeChild(header)    // 删除 
+
+        (3) appendChild()   // 添加或者移动子节点到最后
+
+            在wrapper中新增一个div节点：
+
+            let wrapper = document.getElementById('wrapper')
+            let newNode = document.createElement('div')
+            newNode.innerHTML = 'this is a new node'
+            wrapper.appendChild(newNode)
+            
+            结果是：
+            <div id='wrapper'>
+                <div id='header'>
+                    this is header
+                </div>
+                <div>this is a new node</div>
+            </div>
+
+
+

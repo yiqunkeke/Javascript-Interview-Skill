@@ -1,0 +1,6 @@
+console.log(location.href)
+console.log(location.protocol) // 协议 http:
+console.log(location.host) // 域名 localhost:8000
+console.log(location.pathname) // 路由 /logistics/inOutDetail
+console.log(location.search) // 查询参数 ?id=1
+console.log(location.hash)

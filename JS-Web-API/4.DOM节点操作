@@ -1,0 +1,34 @@
+(1)获取DOM节点：
+
+    . document.getElementById('id1')   //  元素
+    . document.getElementsByTagName('p') // 集合
+    . document.getElementsByClassName('container')  // 集合
+    . document.querySelectorAll('p')  // 集合
+
+
+(2) property ----js对象的属性，叫property
+
+    let pList = document.querySelectorAll('p')
+    let p = pList[0]  // 强调：重点！！！ p 是一个js对象,指向的是一个DOM节点
+
+    // 接下来体现出JS的可识别，可操作----对象的属性，可以自由扩展
+    console.log(p.style.width)  // 获取样式
+    p.style.width = '100px'  // 修改样式
+    console.log(p.className)  // 获取 class
+    p.className = 'p1'  // 修改class
+
+    // 获取 nodeName 和 nodeType
+    console.log(p.nodeName)  
+    console.log(p.nodeType)
+
+(3) attribute ---- 标签中的特性
+
+    let pList = document.querySelectorAll('p')
+    let p = pList[0]  // 强调：重点！！！ p 是一个js对象，指向的是一个DOM节点
+
+    p.getAttribute('data-name')
+    p.setAttribute('data-name', 'imooc')
+
+    p.getAttribute('style')
+    p.setAttribute('style','color:red')
+
