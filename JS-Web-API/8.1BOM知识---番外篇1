@@ -1,0 +1,72 @@
+https://www.jianshu.com/p/0c8b34111e95 
+ 
+ 1. BOM让JavaScript能够和浏览器“对话”。
+
+    Browser Object Model，即浏览器对象模型。
+
+    不同于DOM的标准化组织是W3C，JavaScript的语法标准化组织是ECMA，BOM没有官方标准，
+    它最初是Netscape浏览器标准的一部分，也就是说，
+    对于现代浏览器，每个浏览器都有自己的BOM实现方法，所以直接使用BOM会有兼容性问题。
+ 
+
+ 2. BOM包含哪些内容
+    
+    BOM有一个核心对象window，window对象包含了6大核心模块，分别是：
+
+        . document对象，即文档对象
+
+        . navigator，包含浏览器相关信息
+
+        . screen，用户显示屏幕相关属性
+
+        . location，即当前页面的地址
+
+        . history，即页面的历史记录
+
+        . frames，即HTML自框架
+
+
+
+3. window 对象
+
+    . BOM的核心对象就是window， window对象也是BOM的顶级对象，
+      所有的浏览器都支持window对象，它代表的是浏览器的窗口。
+
+    . Javascript的所有全局对象、全局方法和全局变量全部都自动被归为window对象的方法和属性。
+      在调用这些方法和属性的时候，可以省略window。
+
+    . DOM 也是 window对象的属性。
+
+        window.document.getElementById('header')
+        // 等于
+        document.getElementById('header')
+
+4. window 对象的属性
+
+    . window.innerHeight   // 返回浏览器窗口的高度
+    . window.innerWidth    // 返回浏览器窗口的宽度
+
+
+5. window 对象的方法
+
+    . window.open(url, target, specs, replace)  // 打开一个新的窗口
+
+        url: 要打开窗口的路径
+        target： 打开方法
+
+    . window.close()  // 关闭当前窗口
+
+    . window.resizeTo()   // 修改窗口大小
+
+
+
+6. document 对象     
+    
+    渲染引擎在解析HTML对象时，会生成一个 document 对象，即文档对象，它是HTML文档的根节点。
+    每个元素都会生成对应的DOM对象，由于元素之间有层级关系，整个HTML代码解析结束后，
+    会生成一个由不同节点组成的树形结构，成为DOM树。
+    document用于描述DOM树的状态和属性，并提供了很多可操作DOM树的API.
+
+    
+总结：BOM的顶级对象是 window
+      DOM的顶级对象是 document

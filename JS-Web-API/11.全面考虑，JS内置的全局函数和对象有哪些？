@@ -1,0 +1,5 @@
+3. 全面考虑，JS内置的全局函数和对象有哪些？
+
+    (1) Object、Array、String、Boolean、Math、JSON等，这些在基础知识部分讲过的
+    (2) window、 document等这些刚刚提到的
+    (3) navigator.userAgent 这些即将要学到的 ---- BOM

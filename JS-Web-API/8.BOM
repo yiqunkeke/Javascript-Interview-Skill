@@ -8,8 +8,8 @@
 
     .screen
 
-        console.log(screen.width)
-        console.log(screen.height)
+        console.log(screen.width)  // 显示屏的宽度
+        console.log(screen.height)  // 显示屏的高度
 
     .location
 
