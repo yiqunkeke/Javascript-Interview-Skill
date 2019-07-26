@@ -112,6 +112,56 @@ Q7: 编写一个可以执行如下操作的函数
     addSix(10) 
     addSix(21) 
 
+Q8：解释事件冒泡以及如何阻止它？
 
+    难度： 2
+
+    事件冒泡是指嵌套最深的元素触发一个事件，然后这个事件会顺着嵌套顺序在父元素上触发。
+
+    防止事件冒泡的方法：
+        e.cancelBubble 或 e.stopPropagation()
+
+
+Q9: Javascript 中的 let 关键字有什么用？
+
+    难度： 2
+
+    除了可以在函数级别声明变量，
+    ES6还允许使用let 关键字在代码块({...})中声明变量。
+    如
+    for(let key in obj) {
+        ...
+    }    
+
+Q10: 如何检查一个数字是否为整数？
+
+    难度： 2
+
+    模运算符 %
+
+    检查一个数字是小数还是整数，可以用一种非常简单的方法，就是将它对1进行取模，看看是否有余数
+
+    function isInt(num) {
+        return num % 1 ===0
+    }        
+    console.log(isInt(4))     // true
+    console.log(isInt(12.2))  // fasle
+
+
+Q11: 什么是IIFE(立即调用函数表达式)？
+
+    难度： 3
+
+    它是立即调用函数表达式,简称IIFE。函数被创建后立即执行：
+
+    (function IIFE(){
+        console.log('hello')
+    })();
+
+
+Q13: 如何在Javascript中比较两个对象？
+
+
+Q14：你能解释一下，ES5 和 ES6之间的区别吗？
 
 
