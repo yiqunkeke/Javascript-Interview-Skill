@@ -1,0 +1,50 @@
+. 什么是跨域
+    . 浏览器有同源策略，不允许 ajax 访问其它域接口
+    . http://www.yourname.com/page1.html
+    . http://m.immoc.com/couse/ajaxcoursecom?cid=459
+    . 跨域条件： 协议、域名、端口，有一个不同就算跨域
+
+    可以跨域的三个标签
+        . 但是浏览器允许三个标签跨域加载资源
+            . <img src=xxx />
+            . <link href=xxx />
+            . <script src=xxx>
+
+    三个标签的场景
+        . <img>用于打点统计，统计网站可能是其它域
+        . <link> <script> 可以使用 CDN, CDN的也是其它域
+        . <script> 可以用于JSONP，马上讲解
+
+    跨域注意事项
+        . 所有的跨域请求都必须经过信息提供方允许
+        . 如果未经允许即可获取，那是浏览器同源策略的漏洞            
+
+. JSONP
+
+    JSONP实现原理
+        . 加载 http://coding.m.imooc.cm/classindex.html
+        . 不一定服务器端真正有一个 classindex.html 文件
+        . 服务器可以根据请求，动态生成一个文件，返回
+        . 同理于 <script src="http://coding.m.imooc.com/api.js">
+
+    举例
+        . 例如你的网站要跨域访问慕课网的一个接口
+        . 慕课网给你一个地址 http://coding.imooc.com/api.js
+        . 返回内容格式如 callback({x:100, y:200})(可动态生成)
+
+        <script>
+            window.callback = function(data){
+                console.log(data)
+            }
+        </script>
+        <script src="http://coding.m.imooc.com/api.js"></script>
+        <!--以上将返回 callback({x:100, y:200})-->
+
+        重点是： <script>可以绕过跨域的限制
+
+
+. 服务器端设置 http header
+
+    . 另外一个解决跨域的简介方法，需要服务器端来做
+    . 但是作为交互方，我们必须知道这个方法
+    . 是将来解决跨域问题的一个趋势

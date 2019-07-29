@@ -1,0 +1,47 @@
+知识点： XMLHttpRequest
+            状态码
+            跨域（原理+实现）
+
+
+手动编写一个ajax，不依赖第三方库？（重点）
+
+    var xhr = new XMLHttpRequest()
+    xhr.open('GET', '/api', false)  // false 表示是使用异步
+    xhr.onreadystatechange = function() {
+        // 异步--表示，xhr.onreadystatechange 定义完之后，放到后面异步队列里面执行、
+        if(xhr.readyState == 4) {
+            // 判断服务器端返回的状态码
+            if(xhr.status == 200) {
+                alert(xhr.responseText)
+            }
+        }
+    }
+    xhr.send(null)  // send() 之后，会触发 readyState 的变化，进而会执行上面的 onreadystatechange 函数
+
+
+
+状态码说明 
+
+    每次 readyState发生变化，都会触发 onreadystatechange 函数的执行。
+
+
+
+    readyState
+
+        . 0 - (未初始化)还没有调用 send() 方法
+        . 1 - (载入)已经调用 send() 方法，正在发送请求
+        . 2 - (载入完成) send()方法执行完成，已经接收到全部响应内容
+        . 3 - (交互)正在解析响应内容
+        . 4 - (完成)响应内容解析完成，可以在客户端调用了
+
+
+
+    status （http 标准制定的一个状态码）
+
+        . 2xx - 表示成功处理请求。如200
+        . 3xx - 需要重定向，浏览器直接跳转
+        . 4xx - 客户端请求错误，如404
+        . 5xx - 服务端错误
+
+
+
