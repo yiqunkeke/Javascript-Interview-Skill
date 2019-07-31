@@ -25,6 +25,13 @@
     .localStorage.getItem会报错
     .建议统一使用try-catch封装     
 
+        try {
+                if (sessionStorage.getItem("serveItem")) {
+                    serveItem = JSON.parse(sessionStorage.getItem("serveItem"));
+                }
+        } catch (error) {
+          console.log(error);
+        }
 
 问题：cookie, sessionStorage 和 localStorage的区别？
     .容量:  cookie 4kb ---- webStorage 5M
