@@ -1,0 +1,26 @@
+. 正式项目都需要代码版本管理
+. 大型项目需要多人协作开发
+. git 和 linux 是一个作者
+
+鄙视链：
+仰视链：你想让别人尊重你，你就需要学习更多的知识。
+
+. 网络git服务器如 coding.net 或者 github.com
+. 一般公司代码非开源，都有自己的git服务器
+. 搭建git服务器无需你了解太多
+. git的基本操作必须熟练
+
+常用git命令
+. git add .
+. git commit -m xxx
+. git push origin master
+. git pull origin master
+. git checkout xxx
+
+多人开发
+. git branch
+. git checkout -b xxx 或者 git checkout xxx
+. git merge xxx
+
+. git init  // 初始化一个git仓库
+. git status // 查看状态
