@@ -1,0 +1,69 @@
+AMD = async module define
+
+. require.js    requirejs.org/
+. 全局 define 函数
+    // a.js文件
+    define(['./a-util.js'], function(aUtil){
+        // a.js文件本身返回的东西
+        return {
+            printDate: function(date) {
+
+            }
+        }
+    })
+    // 说明：
+    // 1.  a.js文件依赖于 a-util.js
+    // 2.  aUtil 就是 a-util.js中返回的值
+    // 3.　a.js文件本身，返回一个对象， 对象里面有一个printDate属性，它的值是一个函数
+    // 4. 只有 define 过的东西，才能被 require，所以我们一般先去define一个东西，然后才能在require中拿到这个东西
+
+
+. 全局 require 函数
+. 依赖JS会自动、异步加载 
+
+使用require.js
+// main.js   ------->  这里依赖a.js，a.js中return什么，这里回调函数中的a就是什么。
+require(['./a.js'], function(a) {
+    var date = new Date()
+    a.printDate(date)
+})
+
+//a.js   ------> a.js中，依赖a-util.js，a-util.js中return什么，这里回调函数中的 aUtil就是什么。
+define(['./a-util.js'], function(aUtil){
+    return {
+        printDate: function(date) {
+            console.log(aUtil.aGetFormatDate(date))
+        }
+    }
+})
+
+//a-util.js
+define(['./util.js'], function(util){
+    return {
+        aGetFormatDate: function(date){
+            return util.getFormatDate(date, 2)
+        }
+    }
+})
+
+//util.js
+define(function(){
+    return {
+        getFormatDate: function(date, type) {
+            if(type===1) {
+                return '2017-06-15'
+            }
+            if(type===2) {
+                return '2017年6月15日'
+            }
+        }
+    }
+})
+
+
+// 使用 require.js
+<body>
+    <p>AMD test</p>
+
+    <script src="/require.min.js" data-main="./main.js"></script>
+</body>

@@ -1,0 +1,69 @@
+(1)模块化
+. 这本身就是一个面试的问题
+
+(2)知识点
+. 不使用模块化的情况
+. 使用模块化
+. AMD
+. CommonJS
+
+(3)不使用模块化
+. util.js:   getFormatDate函数                         // util.js 封装底层工具函数
+. a-util.js:  aGetFormatDate函数  使用getFormatDate    // 业务层
+. a.js:  aGetFormatDate函数                            // 业务层
+
+代码
+// util.js
+function getFormatDate(date, type){
+    // type===1 返回2017-06-15
+    // type===2 返回2017年6月15日 格式
+    // ......
+}
+
+// a-util.js
+function aGetFormatDate(date) {
+    // 要求返回 2017年6月15日 格式
+    return getFormatDate(date, 2)
+}
+
+// a.js
+var dt = new Date()
+console.log(aGetFormatDate(dt))
+
+使用
+<script src="util.js"></script>
+<script src="a-util.js"></script>
+<script src="a.js"></script>
+
+<!--1. 引入顺序，必须正确，否则报错 -->
+<!--2. 这些代码中的函数必须是全局变量，才能暴露给使用方。全局变量污染 -->
+<!--3. a.js知道要引用 a-util.js，但是他知道还需要依赖于 util.js吗？-->
+
+
+
+(4)使用模块化
+// util.js
+export {
+    getFormatDate: function(date, type) {
+        // type===1 返回2017-06-15
+        // type===2 返回2017年6月15日 格式
+        // ......
+    }
+}
+
+// a-util.js
+var getFormatDate = require('util.js')
+export {
+    aGetFormatDate: function(date) {
+        // 要求返回 2017年6月15日 格式
+        return getFormatDate(date, 2)
+    }
+}
+
+// a.js
+var aGetFormatDate = require('a-util.js')
+var dt = new Date()
+console.log(aGetFormatDate(dt))
+
+// 直接`<script src="a.js"></script>`，其它的根据依赖关系自动引用
+// 那两个函数getFormatDate和aGetFormatDate，没必要做成全局变量，不会带来污染和覆盖
