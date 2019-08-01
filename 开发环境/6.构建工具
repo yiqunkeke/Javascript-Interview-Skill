@@ -1,0 +1,39 @@
+grunt 
+
+gulp
+
+fis3
+
+webpack
+
+小知识点：
+    (1) npm i http-server -g 这个包来快速搭建一个http服务
+    (2) http-server -p 8881 为这个http服务设置端口号为8881，并启动服务
+
+    这样就可以在浏览器中，通过http://localhost:8881/index.html 来访问静态网页了。
+    注意：http-server 只能访问静态网页
+
+(1)初始化 npm 环境
+    npm init
+
+(2)安装 webpack
+    npm i webpack --save-dev
+
+    --后面跟的是参数：
+        save保存
+        -dev用于开发环境
+
+(3)安装 jquery       
+    npm i jquery --save
+
+    --后面的参数: save保存
+    这里不加-dev是因为 jquery这个包，我们不仅要用于开发环境，在正式环境中也要用到。
+
+(4)安装 moment 小工具---只是为了演示如何安装与卸载，无关业务
+    npm i moment --save
+
+(5) 卸载 moment 
+    npm uninstall moment --save
+
+(6) 配置 webpack, 新建webpack.config.js文件    
+
