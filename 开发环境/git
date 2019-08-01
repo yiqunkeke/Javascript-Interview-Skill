@@ -24,3 +24,4 @@
 
 . git init  // 初始化一个git仓库
 . git status // 查看状态
+. git diff // 查看修改的不同
