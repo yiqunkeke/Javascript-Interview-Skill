@@ -39,4 +39,41 @@ https://juejin.im/post/5c17ad756fb9a049ff4e0a62
             使用require(xxx)
             如果是第三方模块，xxx为模块名
             如果是自定义模块，xxx为模块文件路径。
-            
+        . 加载机制
+            CommonJs模块的加载机制是：输入的是被输出的值的拷贝。
+            也就是说一旦输出一个值，模块内部的变化就影响不到这个值。
+            除非写成一个函数，才能得到内部变动后的值。
+        . 服务端实现
+            1. 下载安装node.js
+            2. 创建项目结构（使用 npm init命令）  
+            3. 下载第三方模块
+                npm install uniq --save // 用于数组去重
+            4. 定义模块代码
+                // m1.js
+                module.exports = {
+                    msg: 'module1',
+                    foo(){
+                        console.log(this.msg)
+                    }
+                }    
+
+                // m2.js
+                module.exports = {
+                    console.log('module2')
+                }  
+
+                // m3.js
+                exports.foo = function() {
+                    console.log('foo() module3')
+                }
+                exports.arr = [1,2,3,3,2]
+                
+                let uniq = require('uniq')
+                let module1 = require('./m1') 
+                let module2 = require('./m2')   
+                let module3 = require('./m3')   
+
+                module1.foo() //module1
+                module2() // module2
+                module3.foo() // foo() module3
+                console.log(uniq(module3.arr)) //[1, 2, 3]
