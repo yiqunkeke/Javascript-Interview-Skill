@@ -10,5 +10,8 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, './dist'),
         filename: 'bundle.js'
+    },
+    optimization: {
+        minimize: true // 压缩JS,由原来的6.9K --> 2.0K
     }
 }
