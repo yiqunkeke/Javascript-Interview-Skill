@@ -28,3 +28,16 @@ module1.foo() //module1
 module2() // module2
 module3.foo() // foo() module3
 console.log(uniq(module3.arr)) //[1, 2, 3]
+
+// 5. es6 模块化
+import {basicNum, add} from './math'
+let sum = add(1,2)
+console.log(sum)
+console.log(basicNum)
+
+// 6. es6模块输出的是值的引用。而commonJS输出的是一个值的拷贝。
+import {counter, incCounter} from './lib'
+console.log(counter) // 3
+incCounter()
+console.log(counter)  // 4
+

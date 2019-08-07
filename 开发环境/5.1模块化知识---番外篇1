@@ -1,5 +1,17 @@
 https://juejin.im/post/5c17ad756fb9a049ff4e0a62
 
+总结：
+    .CommonJs 规范主要用于服务端编程，加载模块是同步的，这并不适合在浏览器环境，
+     因为同步意味着阻塞加载，浏览器资源是异步加载，因此有了AMD， CMD解决方案。
+
+    .AMD规范在浏览器环境中是异步加载模块，而且可以并行加载多个模块。
+     不过，AMD规范开发成本高，代码的阅读和书写比较困难，模块定义方式的语义不顺畅
+
+    .ES6在语言标准的层面上，实现了模块功能，而且实现的相当简单，完全可以取代CommonJS 和
+     AMD 规范，成为浏览器和服务器通用的模块解决方案。  
+
+
+
 1. 模块化的好处：
     . 避免命名冲突
     . 更好的分离，按需加载
@@ -77,3 +89,96 @@ https://juejin.im/post/5c17ad756fb9a049ff4e0a62
                 module2() // module2
                 module3.foo() // foo() module3
                 console.log(uniq(module3.arr)) //[1, 2, 3]
+
+    . AMD    
+        CommonJs规范加载模块是同步的，也就是说只有加载完成，才能执行后面的操作。
+        AMD规范则是非同步加载模块，允许指定回调函数。
+
+        由于node.js主要用于服务器编程，模块文件一般都已经存在本地硬盘，
+        所以加载下来比较快，不用考虑非同步加载的方式，
+        所以CommonJS规范比较适用。        
+
+        但是，如果是浏览器环境，要从服务器端加载模块，这时就必须采用非同步模式，
+        因为，浏览器端一般采用AMD规范。
+
+        此外，AMD规范比commonJS规范在浏览器端实现要来的早。
+
+        
+        基本语法：（重点！！！）
+        . 暴露模块
+            // 没有依赖
+            define(function(){
+                return 模块
+            }) 
+
+            // 有依赖
+            define(['module1', 'module2'], function(m1, m2){
+                return 模块
+            })
+        . 引入模块
+            require(['module1', 'module2'], function(m1, m2){
+                使用m1/m2
+            })    
+
+    . ES6模块化
+        ES6模块的设计思想是尽量的静态化，使得编译时就能确定模块的依赖关系，
+        以及输入和输出的变量。
+        CommonJs和AMD模块，都只能在运行时确定这些东西。
+        比如，CommonJS模块就是对象，输入时必须查找对象属性。
+
+        . ES6模块化语法
+            export命令用于规定模块的对外接口，
+            import命令用于输入其它模块提供的功能。
+
+        . 定义模块
+            // math.js
+            var basicNum = 0
+            var add = function(a, b){
+                return a + b
+            }    
+            export {basicNum, add};
+        . 引用模块
+            import {basicNum, add} from './math'    
+            function test(ele) {
+                ele.textContent = add(99 + basicNum)
+            }
+
+        . 如上例所示，使用import命令的时候，用户需要知道所要加载的变量名或函数名，否则无法加载
+          为了给用户提供方便，让他们不用阅读文档就能加载模块，就要用到 export default命令。
+
+        . export default命令，指定默认输出。
+            export default function() {
+                console.log('foo')
+            }        
+        . import customName from './export-default'
+          customName()
+          
+          模块默认输出，其它模块加载该模块时，import命令可以为该匿名函数指定任意名字。
+
+        . es6模块与commonJS模块的差异 
+            它们有两个重大差异：
+                1. CommonJs模块输出的是一个值的拷贝，ES6模块输出的是值的引用。
+                2. CommonJs模块是运行时加载，ES6模块是编译时输出接口。
+            第二个差异是因为CommonJS加载的是一个对象（即module.exports属性），
+            该对象只有在脚本运行完才会生成。
+            而ES6模块不是对象，它的对象接口只是一种静态定义，
+            在代码静态解析阶段就会生成。
+
+            下面重点解释第一个差异，
+            // lib.js
+            export let counter = 3;
+            export function incCounter() {
+            counter++;
+            }
+            // main.js
+            import { counter, incCounter } from './lib';
+            console.log(counter); // 3
+            incCounter();
+            console.log(counter); // 4
+
+            所以，ES6模块的运行机制与CommonJS不一样。
+            ES6模块是动态引用，并且不会缓存值，模块里面的变量绑定其所在的模块。
+
+
+
+
