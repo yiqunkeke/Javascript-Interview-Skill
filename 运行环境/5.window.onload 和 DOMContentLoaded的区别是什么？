@@ -1,0 +1,10 @@
+1. window.onload 和 DOMContentLoaded的区别是什么？
+        window.addEventListener('load', function(){
+            // 页面的全部资源加载完才会执行，包括图片，视频等
+        })
+
+        document.addEventListener('DOMContentLoaded', function(){
+            // DOM 渲染完即可执行，此时图片，视频还可能没有加载完
+        })
+
+    在jquery 和 zepto中都是用 DOMContentLoaded 作为页面加载完的标志的。而非onload

@@ -1,0 +1,86 @@
+(1)示例1
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Document</title>
+        </head>
+        <body>
+            <p>test</p>
+        </body>
+    </html>
+
+(2) 示例2
+    p{
+        width:100%;
+        height: 100px;
+        font-size:50px
+    }
+
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Document</title>
+            <link rel="stylesheet" type="text/css" href="test.css">
+        </head>
+        <body>
+            <p>test</p>
+        </body>
+    </html>
+    
+    讲解：页面的渲染是一个顺序的流程，由上到下
+          . 头部<head>中有一个css文件，则先去加载并解析css文件，生成CSSOM
+          . 接下来，在渲染 test 段落的时候, 在已知样式情况下，把p一次性渲染出来。
+
+    思考：为什么要把css放在head中？   
+            1.如果不放在head中，用户体验太差
+            2.性能太差 
+
+(3) 示例3
+    document.getElementById('container').innerHTML = 'update by js'
+
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Document</title>
+        </head>
+        <body>
+            <div id="container">default</div>
+            <script src="index.js"></script>
+            <!--script会执行并阻塞渲染！！！-->
+            <!--上面的index.js加载并执行完之后，才会渲染出来 test 段落-->
+            <p>test</p>
+        </body>
+    </html>
+
+    思考： 为什么要把js放在body最下面？
+            1. 这样就不会阻塞渲染，能让页面更快的出来。（性能优化方面）
+            2. 放在最下面，这样script就能拿到所有的标签。
+            如果放在head中，因script会阻塞渲染，有可能js用到的标签还没有被渲染出来。
+            就会出现js拿不到标签的问题。
+
+(4) 示例4
+
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Document</title>
+        </head>
+        <body>
+            <p>test</p>
+            <p><img src="test.png"/></p>
+            <!--图片加载是异步加载，但是<img>的DOM节点会先渲染出来-->
+            <p>test</p>
+        </body>
+    </html>
+
+    window.onload 和 DOMContentLoaded
+        window.addEventListener('load', function(){
+            // 页面的全部资源加载完才会执行，包括图片，视频等
+        })
+        document.addEventListener('DOMContentLoaded', function(){
+            // DOM 渲染完即可执行，此时图片，视频还可能没有加载完
+        })
