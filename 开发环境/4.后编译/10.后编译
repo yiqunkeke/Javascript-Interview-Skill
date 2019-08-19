@@ -38,3 +38,43 @@ webpack应用编译优化之路
 
         上边的数据主要是对组件库和一些内部通用JSSDK采用后编译和按需引入策略后的效果，需要注意的是
         按需引入的效果是要视项目情况而定的，这里的数据仅供参考。
+
+    后编译：
+        后编译：指的时应用依赖的 npm 包并不需要在发布前编译，而是随着应用编译打包的时候一块编译。
+
+    后编译的核心在于把编译依赖包的时间延后，并且统一编译。先来看看它的webpack配置
+
+    配置
+
+    对具体项目应用而言，做到后编译，其实不需要做太多，只需要在webpack的配置文件中，包含
+    需要我们去后编译的依赖包即可（webpack 2+）:
+
+        // webpack.config.js
+        module.exports = {
+            //...
+            module: {
+                rules: [
+                    //...
+                    {
+                        test: /\.js$/,
+                        loader: 'babel-loader',
+                        // 注意这里的 include
+                        // 除了 src 还包含了额外的 node_modules 下的两个包
+                        include: [
+                            resolve('src'),
+                            resolve('node_modules/A'),
+                            resolve('node_modules/B')
+                        ]
+                    },
+                    // ...
+                ]
+            },
+            //...
+        }
+
+        我们只需要把后编译的模块A 和 B通过webpack的 include 配置包含进来即可。
+
+    优点：
+        . 公共的依赖可以实现共用，只此一份，重要的是只编译一次，建议通过 peerDependencies管理依赖
+        . babel 转换  API部分的代码只有一份
+        . 不用每个依赖包都需要配置编译打包环节，甚至可以直接源码级别发布。
