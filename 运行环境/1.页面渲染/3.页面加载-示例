@@ -25,13 +25,16 @@
             <link rel="stylesheet" type="text/css" href="test.css">
         </head>
         <body>
-            <p>test</p>
+            <p>test----在css下载完之前，你看不到我！！！</p>
         </body>
     </html>
     
     讲解：页面的渲染是一个顺序的流程，由上到下
+         当浏览器解析到link标签时，它将立即开始下载CSS样式表，在完成之前不会渲染页面。
+         
           . 头部<head>中有一个css文件，则先去加载并解析css文件，生成CSSOM
           . 接下来，在渲染 test 段落的时候, 在已知样式情况下，把p一次性渲染出来。
+     
 
     思考：为什么要把css放在head中？   
             1.如果不放在head中，用户体验太差
