@@ -25,6 +25,9 @@
             <link rel="stylesheet" type="text/css" href="test.css">
         </head>
         <body>
+            <!--css会执行并阻塞渲染！！！-->
+            <!--上面的link标签中的css加载并执行完之后，才会渲染出来 test 段落-->
+            
             <p>test----在css下载完之前，你看不到我！！！</p>
         </body>
     </html>
