@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="main.js" async="async"></script>
+    <!-- <script src="main.js" async="defer"></script> -->
+</head>
+<body>
+    <script>
+        alert('start')
+    </script>
+    <div>hello world</div>
+    <script>
+        alert('end')
+    </script>
+
+    <!-- async:
+        1. main.js这个<script>标签上有 async="async"属性, 代表main.js这个文件会异步加载:
+           即不会立即执行main.js，而是等main.js加载完之后才会执行。
+           同时由于是异步，浏览器会继续向下解析文档。
+           
+        2. 所以浏览器会先执行start这个<script>，同时会阻塞文档解析。  
+
+        3. 为什么会继续执行end，最后出来hello world？
+
+    -->
+    <!-- defer:
+        脚本延迟到文档完全被解析和显示后再执行。
+        只有外部脚本可以使用。
+    -->
+</body>
+</html>

@@ -13,6 +13,22 @@
                             ┕┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┙      ┊   存储                        ┊
                                    (W3C)              ┕┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┙
 
+
+或者可以这样理解Javascript:
+
+    JavaScript  = ECMAScript  + DOM  + BOM      
+
+        ECMAScript: 
+
+            JavaScript的语法规范
+
+        DOM:
+            JavaScript操作网页上元素的API
+
+        BOM：
+            JavaScript操作浏览器部分功能的API                                 
+
+
 # 主要内容
     1.基础部分
     2.JS API
