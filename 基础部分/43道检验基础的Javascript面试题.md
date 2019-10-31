@@ -346,6 +346,16 @@ sum(1, "2");
 
 所以返回0 2 2。
 
+举一反三：
+
+```
+	var a = 1; var b = ++a + ++a; console.log(b)  // 5
+	var a = 1; var b = a++ + ++a; console.log(b) // 4
+	var a = 1; var b = a++ + a++; console.log(b) // 3
+	var a = 1; var b = ++a + a++; console.log(b) //4
+```
+
+
 ### 16. 下面代码的输出是什么?
 ```
 function getPersonInfo(one, two, three) {

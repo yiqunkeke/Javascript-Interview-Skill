@@ -35,8 +35,11 @@
                 null == undefined  // true
 
                 同理 0 == '', 会把 null 和 undefined 都转换为布尔类型的 false, 两者相等，结果为 true 
+				
+				
+				总结（tips）： 空字符串、0、NaN、null, undefined 都会被转为 false
 
-            
+
             3. if() 语句
 
                 let a = true
@@ -62,21 +65,38 @@
                 上面语句中，if()语句会把变量 c 强制转换为布尔类型的 false, 然后不执行 if 
 
 
-
             4. 逻辑运算
 
                 100 && 0  // false
 
                 上面表达式中，会把 100 和 0 分别强制转换为布尔类型的 true 和 false , 所以，与运算的结果为 false
 
-
-    解答：
+解答：
         除了 object.a 使用 ==, 其它都用 ===
 
         因为这是 jQuery 源码的推荐写法
 
         object.a == null 是 object.a === null || object.a === undefined 的简写。
-
+    
+	
+	
+	注意(tips)：
+		对于 number 类型的浮点数，
+		
+		永远不要判断两个浮点数是否相等。
+		
+		如果非要判断浮点数，建议都乘以10或者100，转为整数之后再进行判断。
+		
+		例如：
+			var result = 0.1 + 0.2 // 结果不是0.3，而是0.30000000000000004
+			
+			console.log(0.07*100) // 结果是 7.000000000000001
+			
+		因为计算机在处理浮点数时是模拟，产生结果可能会有差错。	
+		
+		
+		
+	
                 
 
 
