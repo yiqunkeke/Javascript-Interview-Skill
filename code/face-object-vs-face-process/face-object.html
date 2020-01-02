@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 任务需求：创建一个 div 标签，并把它添加到页面中，同时设置 div 标签的样式
+
+        // 面向对象的方式去思考：
+        // 1> 抽取对象（名词提炼法）----- div、 body 是对象 
+        // 2> 分析属性和方法（动词提炼法） ----- 添加到页面、设置样式  是方法
+
+        // 没有 div 对象 ---- 用 构造函数 来创建对象。
+
+        function DivTag() {
+             this.Dom = document.createElement("div"); 
+             this.append = function(node) {
+                node.appendChild(this.Dom);
+             }
+             this.css = function(name, value) {
+                 this.Dom.style[name] = value;
+             }
+        }
+
+        var div1 = new DivTag();
+        
+        div1.append(document.body);
+        div1.css("border", "10px dashed blue");
+        div1.css("width", "300px");
+        div1.css("height", "200px");
+        div1.css("backgroundColor", "pink");
+
+    </script>
+</body>
+</html>
