@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .active {
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+    <audio controls = "true" autoplay="true" id="a"></audio>
+    <ul>
+        <li class="active">时间都去哪儿了</li>
+        <li>空</li>
+    </ul>
+    <script>
+        // 任务需求：一首音乐播放完，就立即播放下一首
+        // 一...就...  -----> 联想到 “事件”
+
+        // 调试中发现API
+        
+        var a = document.getElementById("a");
+        var ul = document.getElementsByTagName("ul")[0];
+        a.src = "1.mp3";
+
+        a.onended = function() {
+            a.src = "2.mp3";
+            ul.children[0].setAttribute("class", "")
+            ul.children[1].setAttribute("class", "active");
+        }
+
+    </script>
+    
+</body>
+</html>
