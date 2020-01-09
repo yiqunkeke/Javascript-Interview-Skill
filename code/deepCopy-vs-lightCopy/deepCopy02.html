@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        var deepCopy = function() {
+            var temp = {};
+            // 2. 拷贝属性，再判断如果是引用类型需要深拷贝
+            for(var key in this) {
+                if(typeof this[key] === "object") {
+                    temp[key] = this[key].deepCopy();
+                } else {
+                    temp[key] = this[key];
+                }
+            }
+            // 3. 返回对象    
+            return temp;   
+        }
+
+        var car = { 
+            name: "法拉利"
+        };
+        var p = {
+            name: "张三",
+            age: 19,
+            gender: "男",
+            car: car
+        }
+
+        //  让所有的 对象中 都有 deepCopy方法
+        car.deepCopy = deepCopy;
+        p.deepCopy = deepCopy;
+
+        var p2 = p.deepCopy();
+        
+        p.name = "李四";
+        p.age = 20;
+        p.gender = "女"; 
+        p.car.name = "兰博基尼"; // *重点*
+        // 在浏览器 source 中 watch 对象 p 和 p2  
+
+         
+    </script>
+</body>
+</html>

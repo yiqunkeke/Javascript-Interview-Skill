@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 伪代码 -->
+    <!-- <script>
+        var car = { 
+            name: "法拉利",
+            copy: function() {
+                // 假设 copy 已经写好
+            }
+        };
+        var p = {
+            name: "张三",
+            car: car,
+            deepCopy: function() {
+                // 1. 创建一个对象
+                var temp = {};
+                // 2. 拷贝属性，再判断如果是引用类型需要深拷贝
+                if(p.name 是不是引用类型 == false) {
+                    temp.name = p.name;
+                } else {
+                    temp.name = p.name.copy();
+                }
+                // 3. 返回对象            
+            }
+        }
+        //  需要保证所有的 对象中 都有 copy方法，那么就可以实现了
+    </script> -->
+
+    <script>
+        var car = { 
+            name: "法拉利",
+            deepCopy: function() {
+                // 假设 copy 已经写好
+                var temp = {};
+                // 2. 拷贝属性，再判断如果是引用类型需要深拷贝
+                for(var key in this) {
+                    if(typeof this[key] === "object") {
+                        temp[key] = this[key].deepCopy();
+                    } else {
+                        temp[key] = this[key];
+                    }
+                }
+                // 3. 返回对象    
+                return temp;     
+            }
+        };
+
+        var p = {
+            name: "张三",
+            car: car,
+            deepCopy: function() {
+                // 1. 创建一个对象
+                var temp = {};
+                // 2. 拷贝属性，再判断如果是引用类型需要深拷贝
+                for(var key in this) {
+                    if(typeof this[key] === "object") {
+                        temp[key] = this[key].deepCopy();
+                    } else {
+                        temp[key] = this[key];
+                    }
+                }
+                // 3. 返回对象    
+                return temp;        
+            }
+        }
+        //  需要保证所有的 对象中 都有 copy方法，那么就可以简化了
+
+        // 写一个 deepCopy 函数，每一个对象都使用 <对象>.deepCopy = deepCopy
+        // 来使得当前对象具有拷贝的方法，那么就实现深拷贝了
+    </script>
+</body>
+</html>

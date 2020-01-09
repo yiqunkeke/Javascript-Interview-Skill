@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 浅拷贝封装 -->
+    <!-- 利用面向对象的思想 -->
+    <script>
+        var p = {
+                name: "张三", 
+                age: 19, 
+                gender: "男",
+                copy: function() {
+                    // 将当前对象拷贝一份
+                    
+                    // 1. 创建对象
+                    var temp = {};
+                    // 2. 复制对象 --- 在 copy 中，使用 this 表示当前对象
+                    for(var key in this) {
+                        temp[key] = this[key]
+                    }
+                    // 3.返回对象
+                    return temp;
+
+                    // 需要返回新对象（拷贝出来的对象）
+                }
+            }
+
+            var p2 = p.copy();
+
+            p.name = "李四";
+            p.age = 20;
+            p.gender = "女";  
+            // 在浏览器 source 中 watch 对象 p 和 p2  
+
+
+            // this 答疑--->
+            var o = {};
+            o.func = p.copy;
+            o.func();
+            // 在浏览器中调试 看到 this 指向 o 对象
+
+    </script>
+
+</body>
+</html>
