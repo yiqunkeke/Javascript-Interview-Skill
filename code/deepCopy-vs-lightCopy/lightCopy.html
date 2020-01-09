@@ -21,7 +21,7 @@
                     var temp = {};
                     // 2. 复制对象 --- 在 copy 中，使用 this 表示当前对象
                     for(var key in this) {
-                        temp[key] = this[key]
+                        temp[key] = this[key]  // 知识点1： 凡是需要给对象动态添加成员的时候，必须使用[]语法
                     }
                     // 3.返回对象
                     return temp;

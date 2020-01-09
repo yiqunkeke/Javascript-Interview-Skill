@@ -8,3 +8,8 @@
         })
 
     在jquery 和 zepto中都是用 DOMContentLoaded 作为页面加载完的标志的。而非onload
+
+
+
+    总结一句话就是：onload = 系统资源全部加载完成
+                   jq 中 = DOM 渲染完成
