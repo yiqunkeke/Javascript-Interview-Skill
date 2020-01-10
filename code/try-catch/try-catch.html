@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        try {
+            console.log(abc);
+        } catch(e) { 
+            // e 代表 error 或者 exception
+            console.log(e);
+            // ReferenceError: abc is not defined
+            // at try-catch.html:12
+        }
+        console.log("正常的代码");
+        console.log("正常的代码");
+        console.log("正常的代码");
+
+        //  try-catch语法，即使发生了异常，后面的代码依然能够正常执行。
+
+        // try-catch 对`语法错误和代码错误`无效，只对`运行错误`有效
+    </script>
+    
+</body>
+</html>
