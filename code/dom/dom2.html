@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>常见的节点属性</title>
+    <script>
+        // 节点类型
+        //      1. 元素节点
+        //      2. 文本节点
+        //      3. 属性节点
+         
+        onload = function(){
+            //  常见的节点属性
+
+            // 1. nodeValue 表示节点的值，所有的节点都有该属性，一般`文本节点`才使用该属性
+            var text = document.body.lastChild.nodeValue
+            console.log("|" + text + "|");
+
+            console.log(document.body.nodeValue); // body节点 的 nodeValue属性为 null
+            // 将body中的文本修改为“我是唯一的文本”
+            console.log(document.body.lastChild.nodeValue)
+            document.body.lastChild.nodeValue = "我是唯一的文本"
+  
+            // 2. nodeName 表示节点的名字，虽然所有的节点都有该属性，但是一般`元素节点`才使用
+            //  元素节点打印的元素名均为大写字母
+            console.log(document.body.nodeName); // BODY
+            var div = document.createElement("div");
+            console.log(div.nodeName); // DIV
+            
+            // 属性节点和文本节点的 nodeName 是什么 ？
+            console.log(document.body.getAttributeNode('style').nodeName);
+            console.log(document.body.lastChild.nodeName); // #text 所有的文本节点的 nodeName 都是 #text
+            
+            // 3. nodeType 节点类型
+                //  js 高程 dom节点一章中，有详细列出
+            // 1 元素节点
+            // 2 属性节点
+            // 3 文本节点
+            // 9 document
+            // 11 代码片段
+            console.log(document.nodeType);
+            console.log(document.createDocumentFragment().nodeType);
+
+        
+        }
+    </script>
+</head>
+<body style="color: red">
+    你好，我是一个文本节点
+</body>
+</html>
