@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        任何一个 DOM 操作的结论
+
+        1. 所谓的 DOM 操作，操作的是什么 ？
+           DOM 树结构
+        2. 怎么操作？
+           增删改查
+        
+        
+        一般 DOM 树 结构：
+        
+            父节点
+                兄弟节点
+                当前节点
+                    属性节点
+                    子节点
+                兄弟节点    
+     -->
+
+     <!-- 任务：画出下面的DOM树结构，并根据当前节点，访问其父节点、前兄弟节点、后兄弟节点、属性节点及子节点 -->
+     <div>
+        <p>兄弟节点</p><div style="color:red" title="当前节点" id="cur">
+            <p>子节点1</p>
+            <p>子节点2</p>
+        </div>
+        <p>兄弟节点</p>
+     </div>
+
+     <script>
+         var cur = document.getElementById("cur");
+         console.log("当前节点：", cur);
+         console.log("父节点：", cur.parentNode);
+         console.log("前兄弟节点：", cur.previousElementSibling);
+         console.log("后兄弟节点：", cur.nextElementSibling);
+         console.log("所有子节点：", cur.childNodes);
+         console.log("当前节点所有属性：", cur.attributes);
+         console.log("获取当前节点的'style'属性：", cur.getAttribute('style'));
+         console.log("设置当前节点的'style'属性：", cur.setAttribute('style',"color: blue"));
+     </script>
+</body>
+</html>
