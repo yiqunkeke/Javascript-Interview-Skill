@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>如何操作属性节点</title>
+    <script>
+        onload = function() {
+            // 操作属性节点，就是属性的增删改查
+            var div = document.querySelectorAll("#dv")[0];
+
+            //  添加
+
+            // 1. 使用 setAttribute 添加属性
+            // 添加自定义，非标准的属性(DOM-Core)
+            div.setAttribute('itcast', '传智博客');
+
+            // 2. 使用 .xxx = vvv 添加属性
+            // 添加标准属性(HTML-DOM)
+            div.className = "c";
+
+            // 3. 使用 DOM 节点方法 (了解一下即可)
+            // 纯 DOM-Core 的做法
+            var attr = document.createAttribute("test"); // 创建了一个名字叫 "test"的属性节点
+            attr.nodeValue = "测试";
+            div.setAttributeNode(attr);
+
+
+            // 删除 
+
+            var ck = document.querySelectorAll("#ck")[0];
+
+            // 1. 使用 removeAttribute 删除属性
+            // ck.removeAttribute("checked");
+
+            // 2. 使用 removeAttributeNode 删除属性
+            // ck.removeAttributeNode(ck.getAttributeNode('checked'));
+           
+            // 3. 强调--checked 属性并没有从DOM节点上删除
+            // ck.checked = false
+            ck.checked = 'checked'; // => 先将字符串转换成 boolean ，再赋值
+            ck.checked = ''; // => 先将字符串转换成 boolean ，再赋值
+            // 所以，一定要使用 true 或 false 对 checked 属性进行赋值
+
+
+            // 修改
+            // 查询
+        }
+
+    </script>
+</head>
+<body>
+    <div id="dv"></div>
+    <input type="checkbox" checked="checked" id="ck"/>
+</body>
+</html>
