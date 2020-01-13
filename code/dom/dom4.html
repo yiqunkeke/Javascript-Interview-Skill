@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>节点操作</title>
+    <script>
+        onload = function() {
+            // 需求：创建一个 4 *3 的表格
+
+            function c(tagName) {
+                return document.createElement(tagName);
+            }
+
+            var table = c("table");
+            var tbody = c("tbody");
+            table.appendChild(tbody);
+        
+            for(let i = 0; i < 4; i++) {
+                var tr = c("tr");
+                for(let j = 0; j < 3; j++) {
+                    var td = c("td");
+
+                    // 在 td 中放置文本
+                    var txt = document.createTextNode(" ");
+                    td.appendChild(txt);
+                    tr.appendChild(td);
+                    td.width=200;
+                    td.height=50;
+                }
+                tbody.appendChild( tr );
+            }
+
+            table.setAttribute('border', '1');
+            document.body.appendChild(table);
+
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
