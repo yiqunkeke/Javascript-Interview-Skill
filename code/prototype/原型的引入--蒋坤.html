@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>重复数据</title>
+</head>
+<body>
+    <script>
+        // 1.
+        var arr = [];
+        for(let i = 0; i < 2; i++) {
+            arr.push({});
+            arr.push(function(){});
+        }     
+        console.log(arr[0]==arr[2]);
+        console.log(arr[1]==arr[3]);
+         
+        // 2.
+        function createPerson(){
+            var o = {};
+            o.sayHello = function() {
+                console.log("你好");
+            }
+            return o;
+        } 
+        var o1 = createPerson();
+        var o2 = createPerson();
+        console.log(o1==o2);
+        console.log(o1.sayHello==o2.sayHello);
+
+    </script>
+</body>
+</html>
