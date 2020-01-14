@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>如何使用原型</title>
+</head>
+<body>
+    <!-- 
+        1. 为什么使用原型？
+            实现函数复用
+            （提高性能） 
+
+        2. 为什么属性不要放在原型上，而要把方法要放在原型上？
+            属性表示对象的某些特征，对象不一样，属性就不一样；
+            方法表示对象的行为，逻辑是一样的，就可以放在原型中
+
+        3. 如何使用原型
+            1. 利用对象的动态特性
+                * 构造函数.prototype.xxx = vvv;
+            2. 直接替换
+                  Student.prototype = {
+                      sayHello: function() {},
+                      study: function() {}
+                  }    
+
+     -->
+
+     <!-- 画出下面代码的运行图 -->
+     <script>
+         function Person() {
+         }
+
+         Person.prototype.func = function() {
+             console.log('11111');
+         }
+
+         var p1 = new Person();
+
+         Person.prototype = {
+             func: function() {
+                 console.log("22222");
+             }
+         }
+
+         var p2 = new Person();
+
+         p1.func();
+         p2.func();
+     
+     </script>
+    
+</body>
+</html>
