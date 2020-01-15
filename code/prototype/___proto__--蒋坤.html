@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>__proto__</title>
+</head>
+<body>
+    <!-- 
+        以前要访问原型，必须使用构造函数来实现，无法直接使用实例对象来访问原型。
+        火狐最早引入`__proto__`表示使用实例对象引用原型，但是早期是非标准的。
+        通过该属性可以允许使用实例对象直接访问原型。
+     -->
+
+     <script>
+         function Person() {
+
+         }
+
+        //  神秘对象就是 Person.prototype
+        //  那么只有使用 构造函数 才可以访问它
+
+        var o = new Person();
+        //  以前不能直接使用 o 来访问神秘对象
+        //  现在有了 __proto__ 后，
+        //  o.__proto__ 也可以直接访问神秘对象（两个下划线）
+        //  那么 o.__proto__ === Person.prototype
+     </script>
+    
+</body>
+</html>
