@@ -28,6 +28,30 @@
         //  o.__proto__ 也可以直接访问神秘对象（两个下划线）
         //  那么 o.__proto__ === Person.prototype
      </script>
+
+     <!-- 
+         1. 神秘对象中默认都有一个属性 `constructor`，翻译为`构造器`，
+            表示该原型是与哪个构造函数联系起来的。
+         2. `__proto__` 有什么用？
+            * 可以访问原型
+            * 由于在开发中，除非特殊要求，不要使用实例去修改原型的成员，因此属性开发时使用较少
+            * 但是在调试过程中非常方便，可以轻易的访问原型进行查看成员。
+         3. 如果在早期的浏览器中使用实例访问原型如何处理？
+            * 可以使用实例对象访问构造器，然后使用构造器访问原型
+            var o = new Person()
+            o.constructor.prototype;
+         4. 如果给实例继承自原型的属性赋值
+      -->
+      
+      <script>
+          function Foo() {}
+          Foo.prototype.name = "test";
+          var o1 = new Foo();
+          var o2 = new Foo();
+
+          o1.name = "张三"; // 不是修改原型中的 name，而是自己增加了一个 name 属性。
+          console.log(o1.name + "," + o2.name);
+      </script>
     
 </body>
 </html>
