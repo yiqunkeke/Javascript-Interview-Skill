@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>混合继承</title>
+</head>
+<body>
+    <!-- <script>
+        // 利用混入，可以让对象继承
+        var Person = function() {
+
+        }
+
+        var extend = function(o1, o2){
+            for( var key in o2) {
+                o1[key] = o2[key];
+            }
+        }
+
+        extend(Person.prototype, {
+            run: function(){ console.log('我跑步了')},
+            eat: function(){ console.log('我吃饭了')},
+            study: function(){ console.log('我学习了')}
+        })
+
+        var p1 = new Person();
+        var p2 = new Person();
+
+        p1.run();
+        p1.eat();
+        p1.study();
+    </script>   -->
+
+    <!-- 改良 -->
+    <script>
+        // 利用混入，可以让对象继承
+        var Person = function() {
+
+        }
+
+        Person.prototype.extend = function(o){
+            for( var key in o) {
+                this[key] = o[key];
+            }
+        }
+
+        Person.prototype.extend({
+            run: function(){ console.log('我跑步了')},
+            eat: function(){ console.log('我吃饭了')},
+            study: function(){ console.log('我学习了')}
+        })
+
+        var p1 = new Person();
+        var p2 = new Person();
+
+        p1.run();
+        p1.eat();
+        p1.study();
+    </script>  
+</body>
+</html>
