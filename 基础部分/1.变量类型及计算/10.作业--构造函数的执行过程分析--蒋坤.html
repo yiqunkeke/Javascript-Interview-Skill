@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 构造函数的执行过程分析（要求使用文字将每一句话的执行过程描述出来） -->
+    <script>
+        // 1
+        function Person() {
+            this.name = "jim";
+            this.sayHello = function() {
+                console.log("hello");
+            }
+        }
+        var p = new Person();
+
+        /*
+            1. 代码从19行开始，先执行 new Person()创建一个空对象，同时this指向这个空对象。
+            2. 接着，执行Person构造函数，利用对象的动态特性，给对象添加name属性和sayHello方法。
+            3. this 此时就具有了 name 和 sayHello。
+            4. 在 构造函数内部，会自动把 this 对象返回;
+            5. var p 会把 this 对象 赋值给变量 p，p 就指向了 this 对象。p也具有name属性和sayHello方法。
+        */
+    </script>
+
+    <script>
+        // 2
+        function Student(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        Student.prototype = {
+            sayHello: function() {
+                console.log("hello");
+            }
+        }
+        var o = new Student("张三", 19);
+
+        /*
+            1. 代码从36行开始执行，当 function Student(name,age){...} 预解析完成，同时Student.prototype生成，
+            2. 此时，Student.prototype 默认具有 `constructor`，指向 Student。
+            3. 当36行执行后，Student.prototype 指向一个新的对象，这个新对象有一个sayHello方法。
+            4. 接着41行，通过 new Student(..)创建一个空对象，同时this指向这个空对象。
+            5. 接着执行Student构造函数，利用对象的动态特性，通过this给这个空对象添加name和age属性。并自动返回this。
+            6. 最后， var o 会把 this指向的对象赋值给变量 o， o 就指向了 this对象。o具有了name属性和age属性。
+            7. 同时，因为 o 自动连接到 Student.prototype，自然也可以访问到 sayHello 方法。
+        */
+    </script>
+</body>
+</html>
