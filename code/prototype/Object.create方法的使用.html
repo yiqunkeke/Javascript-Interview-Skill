@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Object.create方法的使用</title>
+</head>
+<body>
+    <!-- Object.create()
+        是 ES5中引入的新方法。语法：
+        Object.create(对象) -- 返回新对象
+        功能：返回新对象时，原型就是参数中表示的对象。
+    -->
+    <script>
+        var o = {
+            sayHello: function(){
+                console.log("你好");
+            }
+        }
+        var o1 = Object.create(o);
+    </script>
+</body>
+</html>
