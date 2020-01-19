@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>绘制对象的原型链结构</title>
+</head>
+<body>
+    <!-- 绘制对象的原型链结构
+
+        说明： 函数中也有“__proto__”属性，注意，暂时不考虑函数的该属性
+     -->
+
+     <!-- 任务： 绘制下面的原型链结构 -->
+     <script>
+         function Person(){}
+         var p = new Person();
+     </script>
+
+     <!-- 作业：
+        1. 绘制 {} 的原型链结构
+        2. 绘制 [] 的原型链结构
+    -->
+
+    <!-- 
+        在 js 中，所有的对象字面量在解析以后，就是一个具体的对象了，那么可以理解为 调用了对应的构造方法
+        1. 例如在代码中写上`{}`，就相当于 `new Object()`
+        2. 例如在代码中有`[]`，就相当于`new Array()`
+        3. 例如在代码中有`/./`，就相当于 `new RegExp('.')`
+
+        注意： 在底层理论执行的过程中，是否有调用构造函数，不一定。和浏览器的版本有关。
+     -->
+    
+</body>
+</html>
