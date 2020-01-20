@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>arguments 对象</title>
+</head>
+<body>
+    <!-- 
+        arguments 是一个伪数组对象。它表示在函数调用的过程中传入的所有参数的集合。
+        在函数调用过程中没有规定参数的个数与类型，因此函数调用就具有灵活的特性，那么为了方便使用，
+        在每个函数调用的过程中，函数代码体内有一个默认的对象 arguments，它存储着实际传入的所有参数。
+
+
+        js 中函数并没有规定如何传参
+        1. 定义函数时不写参数，调用时一样可以传递参数
+        2. 定义函数时写了参数，调用时可以不传参
+        3. 定义时候写了一个参数，调用时，可以随意传递多个参数
+
+        在代码设计中，如果需要函数带有任意个参数的时候，一般就不带任何参数，所有的参数利用 arguments 来获取。
+        一般的函数定义语法，可以写成：
+        ```
+            function foo(/*...*/) {
+                
+            }
+        ```
+     -->
+    <script>
+        function foo() {
+            var args = arguments;
+            console.log(args);
+        }
+        foo(1,2,3,4,5)
+    </script>
+</body>
+</html>

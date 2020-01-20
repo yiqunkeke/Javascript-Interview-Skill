@@ -37,9 +37,8 @@
     * 如果没有参数，表示创建一个空函数。
      -->
 
-    <script>
-        // 创建一个打印一句话的函数
-
+     <!-- 创建一个打印一句话的函数 -->
+    <!-- <script>
         // 1.传统的
         function foo() {
             console.log("你好");
@@ -51,6 +50,60 @@
 
         foo();
         func();
+    </script> -->
+
+    <!-- 创建一个空函数 -->
+    <!-- <script>
+        // 1.传统的
+        function foo() {}
+        // 2.Function
+        var func = new Function();
+        foo();
+        func();
+    </script> -->
+
+    <!-- 传入函数内一个数字，打印该数字 -->
+    <!-- <script>
+        // 1.传统的
+        function foo(num) {
+            console.log(num);
+        }
+        // 2.Function
+        var func = new Function("num","console.log(num)");
+        foo(1);
+        func(1);
+    </script> -->
+
+    <!-- 练习：利用 Function 创建一个函数，要求传入两个数字，打印其和 -->
+    <!-- <script>
+        // 1.传统的
+        function foo(num1, num2) {
+            console.log(num1 + num2);
+        }
+        // 2.Function
+        var func = new Function("num1","num2", "console.log(num1 + num2)");
+        foo(1,1);
+        func(1,1);
+    </script> -->
+
+    <!-- 练习：利用Function 创建一个函数，要求允许函数调用时传入做任意个参数，并且函数返回这些数字中最大的数字 -->
+    <script>
+        // 传统
+        function foo(/*...*/) {
+            // 所有的参数都在arguments 中，将其当作数组使用
+            // 将问题转换成了：在一个数组中求最大值
+            var args = arguments;
+            var max = args[0];
+
+            for(var i =1; i< args.length; i++) {
+                if(max < args[i]) {
+                    max = args[i];
+                }
+            }
+            return max;
+        }
+        var max = foo(1,9,50,7,56,89,400);
+        console.log(max);
     </script>
 </body>
 </html>
