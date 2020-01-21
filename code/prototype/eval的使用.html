@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>eval的使用</title>
+</head>
+<body>
+    <script>
+        // 1. 使用 eval 将一个对象形式的字符串转换成对象
+        // "{name: 'jim', age: 19}"
+        // var o = eval("({name: 'jim', age: 19})")
+        // 需加(), 否则 eval 将 {} 解析成代码块了。
+        // 使用() 将其转换成表达式，{}就不再是代码块，而是对象。
+  
+        // 2. 要求在数组中找到元素 7，并返回其在第几行第几列。
+        var arr = [
+            [1,2,3,4],
+            [5,6,7,8],
+            [9,10,11,12]
+        ]
+        var obj = {};
+        var isOver = false;
+        for(var i = 0; i<arr.length; i++) {
+            // 遍历行
+            for(var j = 0; j<arr[i].length; j++) {
+                // 遍历列
+                if(arr[i][j] == 7) {
+                    obj = {
+                        row: i,
+                        col: j
+                    }
+                    // 跳出循环 --- break语句只能跳出当前循环
+                    isOver = true;
+                    break;
+                }
+            }
+            if(isOver) {
+                break;
+            }
+        }
+       console.log(obj);
+
+    // 使用标记语言跳出循环---可以跳出指定循环
+        var arr1 = [
+            [1,2,3,4],
+            [5,6,7,8],
+            [9,10,11,12]
+        ]
+        var obj1 = {};
+        zhangsan: for(var i = 0; i<arr1.length; i++) {
+            // 遍历行
+            for(var j = 0; j<arr1[i].length; j++) {
+                // 遍历列
+                if(arr1[i][j] == 7) {
+                    obj1 = {
+                        row: i,
+                        col: j
+                    }
+                    // 跳出指定循环
+                    break zhangsan
+                }
+            }
+        }
+       console.log(obj1);
+       
+    // 一般来说， 标记跳出用于双重或多重循环。
+    // 同理 continue也可以这么用
+
+           
+    </script>
+</body>
+</html>
