@@ -24,7 +24,7 @@
 2.Function 与函数的关系
 3.函数的原型链结构
 
-## 函数是Funciton 的实例
+## 所有函数都是Funciton 的实例
 
 语法：
 ```
@@ -105,5 +105,21 @@
         var max = foo(1,9,50,7,56,89,400);
         console.log(max);
     </script>
+
+    <!-- 使用 Function创建函数与原来的方式创建函数，有何区别？
+        * Function 是使用字符串构建函数，那么就可以在程序运行过程中创建函数
+        * 以前的方式，函数必须一开始就写好，再经过预解析，一步一步的运行。
+        * 假定从服务器那里拿到了 "[1,2,3,4]"
+            * 将数组形式的字符串，转换成数组对象
+            * var arr = (new Function("return" + str + ";"))();
+    
+        eval函数 -- 轻量级的 Function
+            * 将字符串当作代码来执行
+            * eval("var num = 10");
+              console.log(num);
+
+              
+        -->
+
 </body>
 </html>
