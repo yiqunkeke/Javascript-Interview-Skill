@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>localStorage</title>
+</head>
+<body>
+    
+    <!-- 创建 localStorage -->
+    <script>
+        // 因为 localStorage 是 html5新特性，所以要加一层判断
+        if(window.localStorage) {
+            localStorage.setItem("name", "lijingke");
+            localStorage.setItem("gender","male");
+        }
+    </script>
+
+    <!-- 读取 localStorage -->
+    <script>
+        var name = localStorage.getItem("name");
+        var gender = localStorage.getItem("gender");
+
+        console.log(`name: ${name}, gender: ${gender}`);
+    </script>
+</body>
+</html>
